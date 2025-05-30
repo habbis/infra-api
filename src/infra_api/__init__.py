@@ -1,12 +1,8 @@
-from roadstead_api.config import env_value
-from roadstead_api.logs import create_logs
+from infra_api.config import env_value
+from infra_api.logs import create_logs
+#from infra_api import app
 
-debug, api_address, api_port, db_connection = env_value()
+debug, _, _, _ = env_value()
 
 def main() -> None:
     create_logs("testing")
-    print(debug)
-    print(api_address)
-    print(api_port)
-    print(db_connection)
-    print("Hello from roadstead-api!")

@@ -37,7 +37,7 @@ CREATE TABLE reserved_ip   (
         id SERIAL NOT NULL PRIMARY KEY ,
         name VARCHAR(255) NOT NULL,
         id_hosts INT NOT NULL ,
-        ip inet NOT NULL ,
+        ip VARCHAR(255) NOT NULL ,
         updated TIMESTAMP WITH TIME ZONE DEFAULT now(),
         UNIQUE (ip)
 ) ;
@@ -59,7 +59,7 @@ CREATE TABLE vlan  (
         id SERIAL NOT NULL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         vlan_id INT NOT NULL,
-        prefix CIDR NOT NULL,
+        prefix VARCHAR(255) NOT NULL,
         updated TIMESTAMP WITH TIME ZONE DEFAULT now(),
         UNIQUE (name,prefix)
 ) ;

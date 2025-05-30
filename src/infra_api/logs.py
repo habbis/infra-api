@@ -1,5 +1,5 @@
 import logging
-from roadstead_api.config import env_value
+from infra_api.config import env_value
 
 evn_debug = env_value()
 debug = evn_debug[0]

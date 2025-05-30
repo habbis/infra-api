@@ -1,5 +1,6 @@
 import psycopg
-from roadstead_api.config import env_value
+
+from infra_api.config import env_value
 
 env_db_connection = env_value()
 db_connection = env_db_connection[3]
@@ -9,26 +10,19 @@ def db_connect():
     return dbcon
 
 
-def get_all_vlan():
+def select_all_vlan():
     conn = db_connect()
     cur = conn.cursor()
     cur.execute("SELECT name,vlan_id,prefix,updated FROM vlan")
     data = cur.fetchall()
     cur.close()
     conn.close()
-    data2 = {}
-    keys = ['name', 'vlan_id', 'prefix', 'updated']
-    #values = []
-    #for info in data:
-    for info in range(len(keys)):
-        #data2.append((info[0], info[1], info[2], info[3]))
-        data2[keys[info]] = data[info]
-    if data2 is None:
+    if data is None:
       return None
     else:
-      return data2
+      return data
 
-def get_singel_vlan(name):
+def select_singel_vlan(name):
     conn = db_connect()
     cur = conn.cursor()
     cur.execute("SELECT name,vlan_id,prefix,updated FROM vlan where name=%s", (name,))
