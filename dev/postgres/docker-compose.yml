@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:17
+    container_name: dbdev
+    environment:
+      POSTGRES_USER: infra
+      POSTGRES_PASSWORD: infra
+      POSTGRES_DB: roadstead_api
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - dbdata:/var/lib/postgresql
+volumes:
+  dbdata:
